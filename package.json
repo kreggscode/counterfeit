@@ -1,0 +1,21 @@
+{
+  "name": "counterfeit",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Spot the fake: two pictures or two paragraphs, one is AI, and the clock is running.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.3",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^3.2.4"
+  }
+}

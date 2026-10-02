@@ -1,0 +1,326 @@
+[
+  {
+    "id": "fox",
+    "kind": "image",
+    "subject": "a red fox curled up in fresh snow",
+    "tier": "easy",
+    "real": {
+      "file": "reals/fox.jpg",
+      "title": "Red fox resting in snow (31695215684).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Red_fox_resting_in_snow_(31695215684).jpg",
+      "author": "Yellowstone National Park",
+      "licence": "Public domain"
+    },
+    "fake": {
+      "file": "fakes/fox.jpg",
+      "model": "lykon/dreamshaper-8-lcm",
+      "prompt": "photograph of a red fox curled up in fresh snow, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Fur is where generators still blur: a camera resolves individual hairs, the render melts them into a single mass."
+  },
+  {
+    "id": "tart",
+    "kind": "image",
+    "subject": "a strawberry tart on a ceramic plate",
+    "tier": "easy",
+    "real": {
+      "file": "reals/tart.jpg",
+      "title": "Fruit pastry with kiwi, strawberry and blackberry, 2007.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Fruit_pastry_with_kiwi,_strawberry_and_blackberry,_2007.jpg",
+      "author": "Jeffrey Bary",
+      "licence": "CC BY 2.0"
+    },
+    "fake": {
+      "file": "fakes/tart.jpg",
+      "model": "lykon/dreamshaper-8-lcm",
+      "prompt": "photograph of a strawberry tart on a ceramic plate, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Count the seeds. Generators place strawberry achenes evenly instead of in the irregular spiral a real berry has."
+  },
+  {
+    "id": "lighthouse",
+    "kind": "image",
+    "subject": "a lighthouse on black rocks at sunset",
+    "tier": "easy",
+    "real": {
+      "file": "reals/lighthouse.jpg",
+      "title": "Lighthouse at Sunset (28336073934).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Lighthouse_at_Sunset_(28336073934).jpg",
+      "author": "Susanne Nilsson",
+      "licence": "CC BY-SA 2.0"
+    },
+    "fake": {
+      "file": "fakes/lighthouse.jpg",
+      "model": "lykon/dreamshaper-8-lcm",
+      "prompt": "photograph of a lighthouse on black rocks at sunset, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "The horizon is the tell — generated sunsets tend to smear the sea and sky into one continuous glow."
+  },
+  {
+    "id": "balloon",
+    "kind": "image",
+    "subject": "hot air balloons rising over a valley at dawn",
+    "tier": "easy",
+    "real": {
+      "file": "reals/balloon.jpg",
+      "title": "Balloons In Flight (117949135).jpeg",
+      "page": "https://commons.wikimedia.org/wiki/File:Balloons_In_Flight_(117949135).jpeg",
+      "author": "Jason Brown",
+      "licence": "CC BY 3.0"
+    },
+    "fake": {
+      "file": "fakes/balloon.jpg",
+      "model": "lykon/dreamshaper-8-lcm",
+      "prompt": "photograph of hot air balloons rising over a valley at dawn, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Rope and basket rigging rarely resolves. Real balloons have a visible web of lines; the render approximates it."
+  },
+  {
+    "id": "kingfisher",
+    "kind": "image",
+    "subject": "a kingfisher perched on a bare branch",
+    "tier": "medium",
+    "real": {
+      "file": "reals/kingfisher.jpg",
+      "title": "Common Kingfisher Alcedo atthis.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Common_Kingfisher_Alcedo_atthis.jpg",
+      "author": "Andreas Trepte",
+      "licence": "CC BY-SA 2.5"
+    },
+    "fake": {
+      "file": "fakes/kingfisher.jpg",
+      "model": "black-forest-labs/flux.1-schnell",
+      "prompt": "photograph of a kingfisher perched on a bare branch, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Look at the branch. Generated perches often float, taper wrongly, or pass behind the bird twice."
+  },
+  {
+    "id": "turtle",
+    "kind": "image",
+    "subject": "a green sea turtle gliding over coral",
+    "tier": "medium",
+    "real": {
+      "file": "reals/turtle.jpg",
+      "title": "Chelonia mydas swimming, Hawaii.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Chelonia_mydas_swimming,_Hawaii.jpg",
+      "author": "Dominik Keller",
+      "licence": "CC BY-SA 3.0"
+    },
+    "fake": {
+      "file": "fakes/turtle.jpg",
+      "model": "black-forest-labs/flux.1-schnell",
+      "prompt": "photograph of a green sea turtle gliding over coral, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "The shell pattern is the giveaway: scutes repeat with a symmetry nature never quite manages."
+  },
+  {
+    "id": "path",
+    "kind": "image",
+    "subject": "an autumn forest path covered in leaves",
+    "tier": "medium",
+    "real": {
+      "file": "reals/path.jpg",
+      "title": "Autumn leaves, Glenarm forest - geograph.org.uk - 1010256.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Autumn_leaves,_Glenarm_forest_-_geograph.org.uk_-_1010256.jpg",
+      "author": "Albert Bridge",
+      "licence": "CC BY-SA 2.0"
+    },
+    "fake": {
+      "file": "fakes/path.jpg",
+      "model": "black-forest-labs/flux.1-schnell",
+      "prompt": "photograph of an autumn forest path covered in leaves, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Leaves on the ground get invented at a consistent scale. Real leaf litter is chaotic in size and orientation."
+  },
+  {
+    "id": "village",
+    "kind": "image",
+    "subject": "a snow-covered alpine village beneath a jagged mountain peak",
+    "tier": "medium",
+    "real": {
+      "file": "reals/village.jpg",
+      "title": "Matterhorn in winter with Zermatt village.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Matterhorn_in_winter_with_Zermatt_village.jpg",
+      "author": "Deralpinbergsteiger",
+      "licence": "CC BY-SA 4.0"
+    },
+    "fake": {
+      "file": "fakes/village.jpg",
+      "model": "black-forest-labs/flux.1-schnell",
+      "prompt": "photograph of a snow-covered alpine village beneath a jagged mountain peak, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Windows are the weakness. Generated buildings light them in patterns that do not correspond to any interior."
+  },
+  {
+    "id": "owl",
+    "kind": "image",
+    "subject": "a great horned owl facing the camera",
+    "tier": "hard",
+    "real": {
+      "file": "reals/owl.jpg",
+      "title": "Bubo virginianus -adult and chicks -Arizona-8.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Bubo_virginianus_-adult_and_chicks_-Arizona-8.jpg",
+      "author": "Ken Bosma",
+      "licence": "CC BY 2.0"
+    },
+    "fake": {
+      "file": "fakes/owl.jpg",
+      "model": "bytedance/seedream-5.0-pro",
+      "prompt": "photograph of a great horned owl facing the camera, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Both eyes should share one focal plane. Generated faces often sharpen one and soften the other."
+  },
+  {
+    "id": "horses",
+    "kind": "image",
+    "subject": "wild horses running across an open plain",
+    "tier": "hard",
+    "real": {
+      "file": "reals/horses.jpg",
+      "title": "Wild horses running across the landsacpe (53889283010).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Wild_horses_running_across_the_landsacpe_(53889283010).jpg",
+      "author": "BLMUtah",
+      "licence": "Public domain"
+    },
+    "fake": {
+      "file": "fakes/horses.jpg",
+      "model": "bytedance/seedream-5.0-pro",
+      "prompt": "photograph of wild horses running across an open plain, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Count legs against shadows. Motion is still where anatomy and ground contact drift apart."
+  },
+  {
+    "id": "reef",
+    "kind": "image",
+    "subject": "a school of fish over a coral reef",
+    "tier": "hard",
+    "real": {
+      "file": "reals/reef.jpg",
+      "title": "Maratua reef (35).jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Maratua_reef_(35).jpg",
+      "author": "Nanosanchez",
+      "licence": "CC BY-SA 4.0"
+    },
+    "fake": {
+      "file": "fakes/reef.jpg",
+      "model": "bytedance/seedream-5.0-pro",
+      "prompt": "photograph of a school of fish over a coral reef, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "The fish repeat. Generators tile a small set of individuals rather than render a hundred distinct ones."
+  },
+  {
+    "id": "lake",
+    "kind": "image",
+    "subject": "a mountain lake reflecting snowy peaks",
+    "tier": "hard",
+    "real": {
+      "file": "reals/lake.jpg",
+      "title": "Moraine Lake 17092005.jpg",
+      "page": "https://commons.wikimedia.org/wiki/File:Moraine_Lake_17092005.jpg",
+      "author": "Gorgo",
+      "licence": "Public domain"
+    },
+    "fake": {
+      "file": "fakes/lake.jpg",
+      "model": "bytedance/seedream-5.0-pro",
+      "prompt": "photograph of a mountain lake reflecting snowy peaks, shot on a full-frame camera, natural light, 85mm lens, shallow depth of field, fine detail, no text, no watermark"
+    },
+    "tell": "Reflections should be a mirrored inversion. Generated ones are close, but the ridge line rarely matches exactly."
+  },
+  {
+    "id": "axolotl",
+    "kind": "caption",
+    "subject": "the axolotl",
+    "tier": "easy",
+    "real": {
+      "text": "The axolotl is a species of mole salamander. It is neotenic, reaching sexual maturity without undergoing metamorphosis, and the adults remain fully aquatic with obvious external gills. Axolotls may be difficult to distinguish from the larval stage of other neotenic adult mole salamanders, in particular the tiger salamander, or other species such as mudpuppies.",
+      "source": "Wikipedia",
+      "page": "https://en.wikipedia.org/wiki/Axolotl"
+    },
+    "fake": {
+      "text": "The axolotl is a salamander famous for never fully leaving its larval life, staying in water its whole existence while keeping feathery external gills. Found in Mexico’s lakes and canals, it can regrow lost limbs—and even parts of its spinal cord—making it a favorite of scientists studying regeneration. Thanks to habitat loss and pollution, it’s now critically endangered, so conservation efforts are crucial for its survival.",
+      "model": "openai/gpt-5.4-nano"
+    },
+    "tell": "The real one opens with a dated species description; the generated one starts with a hook and never dates anything."
+  },
+  {
+    "id": "sourdough",
+    "kind": "caption",
+    "subject": "sourdough bread",
+    "tier": "easy",
+    "real": {
+      "text": "Sourdough is a leavening agent containing naturally occurring yeast and lactobacillus bacteria. The term is used to describe bread baked with sourdough, while the sourdough itself is referred to as a starter. In addition to leavening the bread, the fermentation process produces lactic acid, which gives the bread its distinctive sour taste and improves its keeping qualities.",
+      "source": "Wikipedia",
+      "page": "https://en.wikipedia.org/wiki/Sourdough"
+    },
+    "fake": {
+      "text": "Sourdough bread starts with a living starter—flour and water fermented by wild yeast and bacteria. When you mix it into a dough, the starter slowly develops flavor, giving the bread a tangy taste and a chewy, open crumb. Unlike quick breads, sourdough often needs time: it ferments and proofs until the dough is airy and elastic. Baking then locks in that character, making every loaf a little different.",
+      "model": "openai/gpt-5.4-nano"
+    },
+    "tell": "Watch for a closing sentence that summarises. Human encyclopaedic prose rarely signs off, generated prose often does."
+  },
+  {
+    "id": "aurora",
+    "kind": "caption",
+    "subject": "the aurora borealis",
+    "tier": "medium",
+    "real": {
+      "text": "An aurora is a natural light display in Earth's upper atmosphere caused by charged particles from the Sun colliding with atoms in the atmosphere. These collisions excite oxygen and nitrogen, which then emit light of different colours such as green, red, and purple. When observed in high-latitude regions they are called polar lights and aurora polaris. In the Arctic they are called the northern lights or aurora borealis; in the Antarctic, the term southern lights or aurora australis is used. Auroras display dynamic patterns of radiant light that appear as curtains, rays, spirals or dynamic flickers covering the entire sky.",
+      "source": "Wikipedia",
+      "page": "https://en.wikipedia.org/wiki/Aurora"
+    },
+    "fake": {
+      "text": "The aurora borealis is a colorful light show that appears in high-latitude skies near the Arctic. It happens when charged particles from the Sun stream toward Earth and collide with gases in the atmosphere. Oxygen and nitrogen glow in different colors—often green, sometimes pink or red—while magnetic fields guide the particles like invisible rails. The best views are usually on clear, dark nights during winter.",
+      "model": "openai/gpt-5.4-nano"
+    },
+    "tell": "Both read cleanly, so the tell is precision: the real paragraph commits to specific altitudes and particle names."
+  },
+  {
+    "id": "baobab",
+    "kind": "caption",
+    "subject": "the baobab tree",
+    "tier": "medium",
+    "real": {
+      "text": "Adansonia is a genus of medium-to-large deciduous trees known as baobabs or boababs. The eight species of Adansonia are native to Africa, Australia, and Madagascar but have also been introduced to other regions of the world, including Barbados, where several of the baobabs there are suspected to have originated from Africa. Other baobabs have been introduced to Asia. A genomic and ecological analysis further suggests that the genus itself originated in Madagascar.",
+      "source": "Wikipedia",
+      "page": "https://en.wikipedia.org/wiki/Adansonia"
+    },
+    "fake": {
+      "text": "Baobab trees are the giants of Africa’s dry landscapes, famous for their thick, water-storing trunks that can seem to “grow upside down” because of their flat, branching crowns. They’re often called the “tree of life” since they provide shade, leaves, fruit, and—when water is scarce—an emergency source of moisture. Living for centuries, baobabs grow slowly but become landmarks for wildlife and people alike.",
+      "model": "openai/gpt-5.4-nano"
+    },
+    "tell": "The generated paragraph uses more hedges — 'often', 'generally', 'is known for' — where the human text states facts flatly."
+  },
+  {
+    "id": "voyager",
+    "kind": "caption",
+    "subject": "the Voyager 1 spacecraft",
+    "tier": "hard",
+    "real": {
+      "text": "Voyager 1 is a space probe launched by NASA on September 5, 1977, as part of the Voyager program, to study the outer Solar System and the interstellar space beyond the Sun's heliosphere. It was launched 16 days after its twin, Voyager 2. It communicates through the NASA Deep Space Network (DSN) to receive routine commands and to transmit data to Earth. Real-time distance and velocity data are provided by NASA and JPL. At a distance of 171.19 AU as of August 2026, it is the most distant human-made object from Earth. Voyager 1 is projected to reach a distance of one light day from Earth in November 2026.",
+      "source": "Wikipedia",
+      "page": "https://en.wikipedia.org/wiki/Voyager_1"
+    },
+    "fake": {
+      "text": "Voyager 1 is an interplanetary spacecraft launched by NASA on 5 September 1977 to study the outer planets. It conducted close flybys of Jupiter and Saturn and later entered interstellar space, crossing the heliopause in 2012. Voyager 1 carries instruments for measuring magnetic fields, plasma, cosmic rays, and planetary atmospheres. Its power comes from a decaying radioisotope thermoelectric generator system.",
+      "model": "openai/gpt-5.4-nano"
+    },
+    "tell": "Numbers separate them: the real text is dense with dates, distances and instrument names that can be checked."
+  },
+  {
+    "id": "tectonics",
+    "kind": "caption",
+    "subject": "plate tectonics",
+    "tier": "hard",
+    "real": {
+      "text": "Plate tectonics is the scientific theory that Earth's lithosphere comprises a number of large tectonic plates, which have been slowly moving since 3–4 billion years ago. The model builds on the concept of continental drift, an idea developed during the first decades of the 20th century. Plate tectonics came to be accepted by geoscientists after seafloor spreading was validated in the mid- to late 1960s. The processes that result in plates and shape Earth's crust are called tectonics.",
+      "source": "Wikipedia",
+      "page": "https://en.wikipedia.org/wiki/Plate_tectonics"
+    },
+    "fake": {
+      "text": "Plate tectonics is the theory describing Earth’s lithosphere as a set of large and smaller rigid plates that move relative to one another over the more ductile asthenosphere. Plate boundaries include divergent, convergent, and transform types, associated with seafloor spreading, subduction, mountain building, earthquakes, and volcanic activity. Driving forces include mantle convection, slab pull, and ridge push, while plate motions are monitored by geodesy and paleomagnetism.",
+      "model": "openai/gpt-5.4-nano"
+    },
+    "tell": "Both are neutral and correct. The tell is sentence rhythm — generated prose keeps an even beat, human prose varies."
+  }
+]
