@@ -378,6 +378,27 @@ a {
     display: none;
 }
 
+/* Shown when a live draw fails, so the fallback is never invisible. */
+.live-note {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: none;
+    padding: 8px 10px;
+    font-size: 11.5px;
+    line-height: 1.35;
+    font-weight: 650;
+    text-align: center;
+    color: #241900;
+    background: var(--warn);
+}
+
+.frame.live-failed .live-note {
+    display: block;
+}
+
 @keyframes shimmer {
     to {
         background-position: -200% 0;

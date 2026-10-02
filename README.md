@@ -50,7 +50,9 @@ anyone can play without an account.
 the AI tile is drawn live from `image.pollinations.ai` as the round starts, so you
 are judging something the model made a moment ago rather than a stored copy. That
 endpoint is keyless by design, so the browser is never handed a token. If the live
-request fails, the round quietly falls back to the stored file and plays normally.
+request fails, the tile says so and the round falls back to the stored file — the
+fallback is announced rather than hidden, so a broken live path cannot pass
+unnoticed.
 
 ## How the data was made
 

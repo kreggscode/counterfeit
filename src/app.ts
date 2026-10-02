@@ -108,11 +108,18 @@ const chip = (
 
 /**
  * Shows a picture, optionally asking Pollinations for a brand new one first.
- * A failed live request silently drops back to the committed file, so the round
- * is always playable.
+ *
+ * If a live request fails the round still plays from the committed file, but the
+ * swap is announced on the tile rather than hidden — a silent fallback would
+ * make a broken live path impossible to notice.
  */
 const pictureFrame = (alt: string, file: string, live: string | null): HTMLElement => {
     const frame = h("span", { class: "frame loading" });
+    const note = h("span", {
+        class: "live-note",
+        "data-live-failed": "true",
+        text: "Pollinations did not answer — showing the stored fake instead.",
+    });
     const img = h("img", {
         alt,
         "data-slot": alt,
@@ -122,7 +129,8 @@ const pictureFrame = (alt: string, file: string, live: string | null): HTMLEleme
             frame.classList.add("ready");
         },
         onerror: () => {
-            if (img.getAttribute("src") !== assetUrl(file)) {
+            if (live !== null && img.getAttribute("src") !== assetUrl(file)) {
+                frame.classList.add("live-failed");
                 img.src = assetUrl(file);
                 return;
             }
@@ -137,6 +145,7 @@ const pictureFrame = (alt: string, file: string, live: string | null): HTMLEleme
             text: live === null ? "Loading…" : "Pollinations is drawing…",
         }),
         img,
+        note,
     );
     return frame;
 };

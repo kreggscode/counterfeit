@@ -85,7 +85,7 @@ test("draws the fake with Pollinations when fresh fakes are on", async ({ page }
     expect(src).not.toMatch(/pk_|sk_|client_id/i);
 });
 
-test("falls back to the stored fake if the live request fails", async ({ page }) => {
+test("falls back to the stored fake if the live request fails, and says so", async ({ page }) => {
     await page.route("**/image.pollinations.ai/**", (route) => route.abort());
     await page.goto("./");
     await settled(page, "home");
@@ -95,6 +95,12 @@ test("falls back to the stored fake if the live request fails", async ({ page })
     await expect
         .poll(async () => (await page.locator('.tile[data-answer="fake"] img').getAttribute("src")) ?? "")
         .toContain("/counterfeit/fakes/");
+    // The swap is announced rather than hidden.
+    await expect(page.locator('.tile[data-answer="fake"] [data-live-failed]')).toBeVisible();
+    await expect(page.locator('.tile[data-answer="fake"] [data-live-failed]')).toContainText(
+        "Pollinations did not answer",
+    );
+    // The round stays playable.
     await expect(page.locator(".tile").first()).toBeEnabled();
 });
 
