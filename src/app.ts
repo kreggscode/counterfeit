@@ -46,6 +46,8 @@ type State = {
     busy: boolean;
     deadline: number;
     totalMs: number;
+    /** Whether the fake currently on screen is a live Pollinations draw. */
+    liveDrew: boolean;
 };
 
 const ROUNDS = parseRounds(raw);
@@ -67,6 +69,7 @@ const freshState = (settings: Settings): State => ({
     busy: false,
     deadline: 0,
     totalMs: 0,
+    liveDrew: false,
 });
 
 const stopClock = () => {
@@ -113,7 +116,12 @@ const chip = (
  * swap is announced on the tile rather than hidden — a silent fallback would
  * make a broken live path impossible to notice.
  */
-const pictureFrame = (alt: string, file: string, live: string | null): HTMLElement => {
+const pictureFrame = (
+    alt: string,
+    file: string,
+    live: string | null,
+    report?: (drew: boolean) => void,
+): HTMLElement => {
     const frame = h("span", { class: "frame loading" });
     const note = h("span", {
         class: "live-note",
@@ -127,11 +135,13 @@ const pictureFrame = (alt: string, file: string, live: string | null): HTMLEleme
         onload: () => {
             frame.classList.remove("loading");
             frame.classList.add("ready");
+            if (live !== null && img.getAttribute("src") === live) report?.(true);
         },
         onerror: () => {
             if (live !== null && img.getAttribute("src") !== assetUrl(file)) {
                 frame.classList.add("live-failed");
                 img.src = assetUrl(file);
+                report?.(false);
                 return;
             }
             frame.classList.remove("loading");
@@ -269,15 +279,17 @@ const renderPlaying = (root: HTMLElement, state: State, rerender: () => void) =>
     const totalMs = ROUND_MS[round.kind];
     state.totalMs = totalMs;
     state.deadline = Date.now() + totalMs;
+    state.liveDrew = false;
 
     const tile = (side: Side): HTMLButtonElement => {
         const live = isFake(matchup, side) && state.settings.fresh && round.kind === "image"
             ? liveImage(round.fake.prompt, seedFor(round.id))
             : null;
+        const report = live === null ? undefined : (drew: boolean) => { state.liveDrew = drew; };
 
         const body: HTMLElement =
             round.kind === "image"
-                ? pictureFrame(side, picture(matchup, side), live)
+                ? pictureFrame(side, picture(matchup, side), live, report)
                 : h("blockquote", { class: "prose", text: caption(matchup, side) });
 
         return h(
@@ -342,12 +354,17 @@ const renderReveal = (root: HTMLElement, state: State, rerender: () => void) => 
     const fakeSide = matchup.fakeOn;
 
     // Both halves of the pair are explained: what Pollinations drew or wrote,
-    // and where the genuine counterpart came from.
+    // and where the genuine counterpart came from. A live draw does not name a
+    // model because the keyless endpoint picks its own — crediting the stored
+    // round's model for an image that came from somewhere else would be wrong.
+    const drewLive = round.kind === "image" && state.liveDrew;
     const provenance: HTMLElement =
         round.kind === "image"
             ? h("p", { class: "prov" },
                   h("strong", { text: "The fake" }),
-                  ` — drawn by Pollinations with ${round.fake.model}.`,
+                  drewLive
+                      ? " — drawn live by Pollinations just now."
+                      : ` — drawn by Pollinations with ${round.fake.model}.`,
                   h("br"),
                   h("code", { class: "prompt-text", text: round.fake.prompt }),
               )
@@ -387,6 +404,7 @@ const renderReveal = (root: HTMLElement, state: State, rerender: () => void) => 
             class: `reveal ${last.verdict}`,
             "data-verdict": last.verdict,
             "data-answer": fakeSide,
+            "data-live-drew": String(drewLive),
         },
             h("h2", { text: verdictWord }),
             h("p", {

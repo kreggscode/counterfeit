@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
     COMMONS_API,
-    LIVE_MODEL,
     IMAGE_ENDPOINT,
     commonsQuery,
     liveImage,
@@ -15,10 +14,13 @@ describe("liveImage", () => {
         const url = liveImage("a red fox curled up in fresh snow", 42);
         expect(url.startsWith(IMAGE_ENDPOINT)).toBe(true);
         expect(url).toContain("a%20red%20fox");
-        expect(url).toContain(`model=${LIVE_MODEL}`);
         expect(url).toContain("seed=42");
         expect(url).toContain("nologo=true");
         expect(url).not.toMatch(/[?&](token|key|api_key)=/i);
+    });
+
+    it("does not pin a model the endpoint may no longer list", () => {
+        expect(liveImage("a fox", 1)).not.toContain("model=");
     });
 
     it("keeps the prompt readable in the query", () => {

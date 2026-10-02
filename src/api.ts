@@ -9,9 +9,6 @@
 
 export const IMAGE_ENDPOINT = "https://image.pollinations.ai/prompt/";
 
-/** Model the live endpoint is known to accept. */
-export const LIVE_MODEL = "flux";
-
 export type Fetcher = (input: string, init?: { headers?: Record<string, string> }) => Promise<{
     ok: boolean;
     status: number;
@@ -19,12 +16,15 @@ export type Fetcher = (input: string, init?: { headers?: Record<string, string> 
     arrayBuffer(): Promise<ArrayBuffer>;
 }>;
 
+/**
+ * No `model` is requested: the keyless endpoint serves whatever it currently
+ * lists, and pinning a name would go stale the moment that list changes.
+ */
 export const liveImage = (prompt: string, seed: number): string => {
     const query = new URLSearchParams({
         width: "832",
         height: "832",
         nologo: "true",
-        model: LIVE_MODEL,
         seed: String(seed),
     });
     return `${IMAGE_ENDPOINT}${encodeURIComponent(prompt)}?${query}`;

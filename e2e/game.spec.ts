@@ -53,7 +53,8 @@ test("scores a correct guess and credits the photograph", async ({ page }) => {
     await expect(reveal).toContainText("The AI was side");
     await expect(reveal).toContainText("+");
     await expect(reveal.locator(".tell")).toContainText("What gave it away");
-    await expect(reveal).toContainText("drawn by Pollinations");
+    await expect(reveal).toHaveAttribute("data-live-drew", "false");
+    await expect(reveal).toContainText("drawn by Pollinations with");
     await expect(reveal).toContainText("Wikimedia Commons");
     await expect(page.getByRole("button", { name: "Next" })).toBeEnabled();
 });
@@ -72,6 +73,12 @@ test("charges a guess that lands on the real photograph", async ({ page }) => {
 });
 
 test("draws the fake with Pollinations when fresh fakes are on", async ({ page }) => {
+    // Serve the live draw from a local file so this asserts the app's behaviour
+    // rather than the network; the endpoint itself is exercised for real by the
+    // unit suite, and the failure path has its own test below.
+    await page.route("**/image.pollinations.ai/**", (route) =>
+        route.fulfill({ path: "public/fakes/fox.jpg", contentType: "image/jpeg" }),
+    );
     await page.goto("./");
     await settled(page, "home");
     await expect(page.locator('input[data-fresh]')).toBeChecked();
@@ -79,10 +86,19 @@ test("draws the fake with Pollinations when fresh fakes are on", async ({ page }
 
     const live = page.locator('.tile[data-answer="fake"] img[data-live]');
     await expect(live).toHaveAttribute("src", /^https:\/\/image\.pollinations\.ai\/prompt\//);
-    await expect(live).toHaveAttribute("src", /model=flux/);
-    // No publishable key is ever handed to the browser.
+    await expect(page.locator('.tile[data-answer="fake"] .frame.ready')).toBeAttached({ timeout: 60_000 });
+    // No key is handed to the browser, and no model is pinned — the endpoint
+    // serves whichever it currently lists.
     const src = (await live.getAttribute("src")) ?? "";
     expect(src).not.toMatch(/pk_|sk_|client_id/i);
+    expect(src).not.toMatch(/[?&]model=/);
+
+    await pick(page, "fake");
+    const reveal = page.locator(".reveal");
+    await expect(reveal).toHaveAttribute("data-live-drew", "true");
+    await expect(reveal).toContainText("drawn live by Pollinations just now");
+    // A live draw must not be credited with the stored round's model.
+    await expect(reveal).not.toContainText("drawn by Pollinations with");
 });
 
 test("falls back to the stored fake if the live request fails, and says so", async ({ page }) => {
